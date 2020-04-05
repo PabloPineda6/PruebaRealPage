@@ -2,6 +2,7 @@ package com.google.steps;
 
 import com.google.pages.HomePage;
 import com.google.pages.ResultsPage;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
@@ -9,9 +10,13 @@ import org.testng.asserts.SoftAssert;
 
 public class SearchStep {
 
-  @Page HomePage homePage;
+  public final static String TO_SEARCH = "Search";
 
-  @Page ResultsPage resultsPage;
+  @Page
+  HomePage homePage;
+
+  @Page
+  ResultsPage resultsPage;
   SoftAssert softAssert = new SoftAssert();
 
   public void openHome() {
@@ -19,6 +24,7 @@ public class SearchStep {
   }
 
   public void typeYourSearch(String strWhatToSearch) {
+    Serenity.setSessionVariable(TO_SEARCH).to(strWhatToSearch);
     homePage.typeYourSearch(strWhatToSearch);
   }
 

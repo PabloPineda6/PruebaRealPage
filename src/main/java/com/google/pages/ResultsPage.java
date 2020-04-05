@@ -1,5 +1,8 @@
 package com.google.pages;
 
+import static com.google.steps.SearchStep.TO_SEARCH;
+
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -17,7 +20,7 @@ public class ResultsPage extends PageObject {
   private String txtTitles = "//div[@id='search']//child::h3[1][text()='result']";
 
   public Boolean searchResults() {
-    String title = txtResults.replace("result", txtFirstResult);
+    String title = txtResults.replace("result", Serenity.sessionVariableCalled(TO_SEARCH));
     WebElementFacade txtResults = find(By.xpath(title));
     return txtResults.isPresent();
   }

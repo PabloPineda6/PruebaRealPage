@@ -26,8 +26,8 @@ Feature: Google Homepage Search
     And the suggestions list is displayed
     And I click on the first suggestion in the list
     Then I go to the search result page
-    And the first result is "The Books - Patrick Rothfuss"
+    And the first result is The Books - Patrick Rothfuss
     When I click on the first result link
-    Then I go to the "Patrick Rothfuss - The Books" page
+    Then I go to the Patrick Rothfuss - The Books page
 
 
