@@ -26,9 +26,7 @@ public class HomeDefinition {
   }
 
   @Then("^I go to the search result page$")
-  public void iGoToTheSearchPage() {
-    searchStep.searchResults();
-  }
+  public void iGoToTheSearchPage() { searchStep.searchResults(); }
 
   @Then("^the first result is (.*)$")
   public void theFirstResultIs(String strFirstResult) {
@@ -79,4 +77,22 @@ public class HomeDefinition {
 
   @And("^all results will say (.*)$")
   public void allResultsWillSay(String strAllResultsWillSay) { searchStep.allResultsWillSay(strAllResultsWillSay); }
+
+  @When("^I click on the option Next at the bottom of the page$")
+  public void iClickOnTheOptionNextAtTheBottomOfThePage() { searchStep.clickOnTheOptionNext(); }
+
+  @Then("^I go to the search results page number (\\d+)$")
+  public void iGoToTheSearchResultsPageNumber(int  intPageToGo) { searchStep.goToThatSearchResultsPage(intPageToGo); }
+
+  @When("^I click on the option Previous at the bottom of the page$")
+  public void iClickOnTheOptionPreviousAtTheBottomOfThePage() { searchStep.clickOnTheOptionPrevious(); }
+
+  @When("^I click on the number (\\d+) at the bottom of the page$")
+  public void iClickOnTheNumberAtTheBottomOfThePage(int intPageToGo) { searchStep.clickOnNumberOfPage(intPageToGo); }
+
+  @When("^I click on the (.*) or (.*) search option link$")
+  public void iClickOnTheSearchOptionLink(String strSearchOptionEng, String strSearchOptionEsp) { searchStep.searchOptionLink(strSearchOptionEng, strSearchOptionEsp); }
+
+  @Then("^I go to the (.*) or (.*) search option page$")
+  public void iGoToTheSearchOptionPage(String strSearchOptionEng, String strSearchOptionEsp) { searchStep.searchOptionPage(strSearchOptionEng, strSearchOptionEsp); }
 }

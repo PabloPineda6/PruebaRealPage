@@ -1,7 +1,9 @@
 
 Feature: Google Homepage Search
 
-  Scenario: User can search with "Google Search" but doesn't find desired page
+############## USER STORIES (Later corrected as Test Cases) ##############
+
+  Scenario: (Original and failing) User can search with "Google Search"
     Given I'm on the homepage
     When I type The name of the wind into the search field
     And I click the Google Search button
@@ -9,6 +11,18 @@ Feature: Google Homepage Search
     And the first result is The Name of the Wind - Patrick Rothfuss
     When I click on the first result link
     Then I go to the The Books - Patrick Rothfuss page
+
+  Scenario: (Original and failing) User can search by using the suggestions
+    Given I'm on the homepage
+    When I type The name of the w into the search field
+    And the suggestions list is displayed
+    And I click on the first suggestion in the list
+    Then I go to the search result page
+    And the first result is The Name of the Wind - Patrick Rothfuss
+    When I click on the first result link
+    Then I go to the Patrick Rothfuss - The Books page
+
+##########################################################################
 
   Scenario: User can search with "Google Search"
     Given I'm on the homepage
@@ -75,3 +89,25 @@ Feature: Google Homepage Search
     And I click the Google Search button
     Then In the search result page no result will say The Books
     And all results will say Patrick Rothfuss
+
+  Scenario: User can pick results page by next and number
+    Given I'm on the homepage
+    When I type The Books - Patrick Rothfuss into the search field
+    And I click the Google Search button
+    Then I go to the search result page
+    When I click on the option Next at the bottom of the page
+    Then I go to the search results page number 2
+    When I click on the option Previous at the bottom of the page
+    Then I go to the search result page
+    When I click on the number 4 at the bottom of the page
+    Then I go to the search results page number 4
+
+  Scenario: User can search related images, news, books and videos
+    Given I'm on the homepage
+    When I type The Books - Patrick Rothfuss into the search field
+    And I click the Google Search button
+    Then I go to the search result page
+    When I click on the News or Noticias search option link
+    Then I go to the News or Noticias search option page
+    When I click on the Images or Imágenes search option link
+    Then I go to the Images or Imágenes search option page

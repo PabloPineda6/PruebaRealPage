@@ -112,4 +112,30 @@ public class SearchStep {
         "The words '" + strAllResultsWillSay + "' were supposed to appear in every result");
     softAssert.assertAll();
   }
+
+  public void clickOnTheOptionNext() { resultsPage.clickOnTheOptionNext(); }
+
+  public void clickOnTheOptionPrevious() { resultsPage.clickOnTheOptionPrevious(); }
+
+  public void clickOnNumberOfPage(int intPageToGo) { resultsPage.clickOnNumberOfPage(intPageToGo); }
+
+  public void goToThatSearchResultsPage(int intPageToGo) {
+    softAssert.assertEquals(
+            resultsPage.goToThatSearchResultsPage(intPageToGo),
+            true,
+            "The result page the user was directed is not the number'" + intPageToGo + "'");
+    softAssert.assertAll();
+  }
+
+  public void searchOptionLink(String strSearchOptionEng, String strSearchOptionEsp) {
+    resultsPage.searchOptionLink(strSearchOptionEng, strSearchOptionEsp);
+  }
+
+  public void searchOptionPage(String strSearchOptionEng, String strSearchOptionEsp) {
+    softAssert.assertEquals(
+            resultsPage.searchOptionPage(strSearchOptionEng, strSearchOptionEsp),
+            true,
+            "The result page the user was directed to, is not the '" + strSearchOptionEng + "' or '" + strSearchOptionEsp + "' option search page");
+    softAssert.assertAll();
+  }
 }
