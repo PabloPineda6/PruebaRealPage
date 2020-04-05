@@ -1,33 +1,14 @@
+
 Feature: Google Homepage Search
 
-
-  Scenario: User can search with "Google Search" but doesn't find desired page
-    Given I'm on the homepage
-    When I type The name of the wind into the search field
-    And I click the Google Search button
-    Then I go to the search result page
-    And the first result is The Name of the Wind - Patrick Rothfuss
-    When I click on the first result link
-    Then I go to the The Books - Patrick Rothfuss page
-
-  Scenario: User can search with "Google Search"
+  Scenario: User can pick results page by next and number
     Given I'm on the homepage
     When I type The Books - Patrick Rothfuss into the search field
     And I click the Google Search button
     Then I go to the search result page
-    And the first result is The Books - Patrick Rothfuss
-    When I click on the first result link
-    Then I go to the The Books - Patrick Rothfuss page
-
-
-  Scenario: User can search by using the suggestions
-    Given I'm on the homepage
-    When I type The Books - Patrick Roth into the search field
-    And the suggestions list is displayed
-    And I click on the first suggestion in the list
+    When I click on the option Next at the bottom of the page
+    Then I go to the search results second page
+    When I click on the option Previous at the bottom of the page
     Then I go to the search result page
-    And the first result is The Books - Patrick Rothfuss
-    When I click on the first result link
-    Then I go to the Patrick Rothfuss - The Books page
-
-
+    When I click on the number 4 at the bottom of the page
+    Then I go to the search results forth page

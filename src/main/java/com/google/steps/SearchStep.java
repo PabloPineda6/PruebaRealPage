@@ -55,7 +55,7 @@ public class SearchStep {
     softAssert.assertEquals(
         resultsPage.checkFirstResult(strInsideFirstPage1, strInsideFirstPage2),
         true,
-        "The first page of the search was not the expected one");
+        "The first page of the search was not '" + strInsideFirstPage1 + " - " + strInsideFirstPage2 + "' as expected");
     softAssert.assertAll();
   }
 
@@ -65,5 +65,51 @@ public class SearchStep {
 
   public void clickSugestion() {
     homePage.clickSugestion();
+  }
+
+  public void feelingLucky() { homePage.feelingLucky(); }
+
+  public void addToSearch(String strAddToSearch) { resultsPage.addToSearch(strAddToSearch); }
+
+  public void relatedSearches() { resultsPage.relatedSearches(); }
+
+  public void relatedResults() {
+    softAssert.assertEquals(
+            resultsPage.relatedResults(),
+            true,
+            "The first result doesn't have most of the searched words");
+    softAssert.assertAll();
+  }
+
+  public void noResult() {
+    softAssert.assertEquals(
+            resultsPage.noResult(),
+            true,
+            "The search was expected to return no results, but it did");
+    softAssert.assertAll();
+
+  }
+
+  public void iAmOnTheHomepage() {
+    softAssert.assertEquals(
+            homePage.iAmOnTheHomepage(),
+            true,
+            "The user was expected to be on the Homepage, but isn't");
+    softAssert.assertAll();
+  }
+
+  public void noResultWillSay(String strNoResultWillSay) {
+    softAssert.assertEquals(
+        resultsPage.noResultWillSay(strNoResultWillSay),
+        false,
+        "The words '" + strNoResultWillSay + "' were not supposed to appear in the search");
+    }
+
+  public void allResultsWillSay(String strAllResultsWillSay) {
+    softAssert.assertEquals(
+        resultsPage.allResultsWillSay(strAllResultsWillSay),
+        true,
+        "The words '" + strAllResultsWillSay + "' were supposed to appear in every result");
+    softAssert.assertAll();
   }
 }

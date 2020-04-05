@@ -54,4 +54,29 @@ public class HomeDefinition {
   public void iClickOnTheFirstSuggestionInTheList() {
     searchStep.clickSugestion();
   }
+
+  @And("^I click on the I'm Feeling Lucky button$")
+  public void iClickOnTheIMFeelingLuckyButton() { searchStep.feelingLucky(); }
+
+  @When("^I add (.*) to the search field content$")
+  public void iAddPatrickRothfussToTheSearchFieldContent(String strAddToSearch) {searchStep.addToSearch(strAddToSearch);
+  }
+
+  @When("^I click on the the first related search at the bottom of the page$")
+  public void iClickOnTheTheFirstRelatedSearchAtTheBottomOfThePage() { searchStep.relatedSearches(); }
+
+  @Then("^I go to the search results page of that related option$")
+  public void iGoToTheSearchResultsPageOfThatRelatedOption() { searchStep.relatedResults(); }
+
+  @Then("^The search doesn't return any result$")
+  public void theSearchDoesnTReturnAnyResult() { searchStep.noResult(); }
+
+  @Then("^I am on the homepage$")
+  public void iAmOnTheHomepage() { searchStep.iAmOnTheHomepage(); }
+
+  @Then("^In the search result page no result will say (.*)$")
+  public void inTheSearchResultPageNoResultWillSay(String strNoResultWillSay) { searchStep.noResultWillSay(strNoResultWillSay); }
+
+  @And("^all results will say (.*)$")
+  public void allResultsWillSay(String strAllResultsWillSay) { searchStep.allResultsWillSay(strAllResultsWillSay); }
 }
